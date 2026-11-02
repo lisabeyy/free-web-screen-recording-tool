@@ -1,0 +1,25 @@
+{
+  "name": "free-web-screen-recording-tool",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 4420",
+    "build": "next build",
+    "start": "next start -p 4420",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hls.js": "^1.7.4",
+    "livekit-client": "^2.23.0",
+    "livekit-server-sdk": "^2.19.2",
+    "next": "^15.5.28",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^6.0.3"
+  }
+}

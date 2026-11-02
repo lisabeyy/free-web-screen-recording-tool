@@ -6,6 +6,10 @@ import { BACKGROUNDS, Compositor, DEFAULT_LOOK, LAYOUTS, type Look } from "@/lib
 import { clock, rememberId, type View } from "@/lib/client";
 import { MAX_RECORD_SECONDS } from "@/lib/config";
 
+import { SetupModal } from "@/components/SetupModal";
+
+const DEMO = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+
 type Phase = "setup" | "countdown" | "starting" | "recording" | "stopping";
 
 export default function Studio() {
@@ -24,6 +28,7 @@ export default function Studio() {
   const [count, setCount] = useState(3);
   const [elapsed, setElapsed] = useState(0);
   const [error, setError] = useState("");
+  const [showSetup, setShowSetup] = useState(false);
   const [micOn, setMicOn] = useState(true);
   const [screenOn, setScreenOn] = useState(false);
   const [level, setLevel] = useState(0);
@@ -126,6 +131,7 @@ export default function Studio() {
   }, [router]);
 
   const begin = async () => {
+    if (DEMO) return setShowSetup(true);
     setError("");
     if (!camStream.current) return setError("Camera and microphone are not ready yet.");
     await mixer.current?.resume();
@@ -333,6 +339,7 @@ export default function Studio() {
           <p className="muted note">Recordings are limited to 1 hour. After you stop, you have 6 hours to download the MP4 before it is deleted from our server.</p>
         </aside>
       </div>
+      {showSetup && <SetupModal onClose={() => setShowSetup(false)} />}
     </main>
   );
 }

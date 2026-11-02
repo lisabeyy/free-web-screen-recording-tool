@@ -24,6 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Method not allowed" });
   }
+  if (process.env.DEMO_MODE === "true") return res.status(403).json({ error: "Recording is disabled on the hosted demo. Run it locally, see the README." });
   if (!livekitEnabled) return res.status(503).json({ error: "LiveKit is not configured." });
   const ip = String(req.headers["fly-client-ip"] || req.headers["x-forwarded-for"] || req.socket.remoteAddress || "").split(",")[0].trim();
   if (tooMany(ip)) return res.status(429).json({ error: "Too many recordings started from your connection. Try again in an hour." });

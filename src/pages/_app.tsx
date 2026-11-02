@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "@/styles/globals.css";
+import { GitHubIcon, HeartIcon, TelegramIcon } from "@/components/Icons";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,12 +12,18 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Component {...pageProps} />
       <footer className="foot">
-        <span>Free to use. Hosting costs real money, help keep it running: </span>
-        <a href="https://pay.loofta.com/me/@lisabeyy" target="_blank" rel="noreferrer">pay.loofta.com/me/@lisabeyy</a>
-        <span> · Need help setting it up? </span>
-        <a href="https://t.me/lisabeyy" target="_blank" rel="noreferrer">t.me/lisabeyy</a>
-        <span> · </span>
-        <a href="https://github.com/lisabeyy/free-web-screen-recording-tool" target="_blank" rel="noreferrer">Source</a>
+        <p>Free to use. Hosting costs real money, so if it saves you time, help keep it running.</p>
+        <div className="foot-links">
+          <a className="pill gh" href="https://github.com/lisabeyy/free-web-screen-recording-tool" target="_blank" rel="noreferrer">
+            <GitHubIcon /> Star on GitHub
+          </a>
+          <a className="pill tip" href="https://pay.loofta.com/me/@lisabeyy" target="_blank" rel="noreferrer">
+            <HeartIcon /> Support the project
+          </a>
+          <a className="pill tg" href="https://t.me/lisabeyy" target="_blank" rel="noreferrer">
+            <TelegramIcon /> Need help setting it up? DM me
+          </a>
+        </div>
       </footer>
     </>
   );

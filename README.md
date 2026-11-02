@@ -7,7 +7,7 @@ Record your screen and camera in the browser, choose your layout, and download t
 - Records up to **1 hour** per session
 - Download your MP4 within **6 hours**, then it is deleted from the server automatically (no storage kept)
 
-**Use my hosted version:** https://free-web-screen-recording-tool.fly.dev
+**Live preview:** https://free-web-screen-recording-tool.fly.dev (try the layouts there; recording runs on your own machine, see below)
 
 ## How it works
 
@@ -67,7 +67,7 @@ fly deploy
 
 The volume keeps the list of recordings between restarts, so expired ones are always deleted from Mux. Keep the Fly app at one machine.
 
-Anyone with the link can start a recording on your accounts, so keep the limits above in place for a public deployment.
+Anyone with the link can start a recording on your accounts, so keep the limits above in place for a public deployment. To turn a deployment into a preview-only page like mine (Start recording opens the local setup guide), set `DEMO_MODE=true` and build with `NEXT_PUBLIC_DEMO_MODE=true`.
 
 ## Contribute and maintain
 
